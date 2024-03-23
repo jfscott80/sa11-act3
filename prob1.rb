@@ -1,4 +1,6 @@
 def extract_urls(text)
+    pattern = //
+    text.scan(pattern)
 end
 
 sample_text = "Visit our site at http://www.example.org for more

@@ -1,5 +1,17 @@
 def parse_invoices(invoice_data)
+    invoices = invoice_data.strip().split("\n")
+    # pattern = /(\d{4}-\d{2}-\d{2}) - (INV\S+) - (\S+\s\S+) - (\$.*)/
+    pattern = /(\d{4}-\d{2}-\d{2})( - )(INV\S+)( - )(\S+\s\S+)( - )(\$.*)/
+    # pattern =
+    match = invoices.match(pattern)
+    if match
+        match.tap do #| line |
+            # print match
+            p match.inspect
+        end
+    end
 end
+
 
 invoice_entries = <<-INVOICES
 2023-03-01 - INV001 - Acme Corp - $1000
