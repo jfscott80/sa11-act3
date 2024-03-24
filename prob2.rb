@@ -1,15 +1,21 @@
 def parse_invoices(invoice_data)
-    invoices = invoice_data.strip().split("\n")
-    # pattern = /(\d{4}-\d{2}-\d{2}) - (INV\S+) - (\S+\s\S+) - (\$.*)/
-    pattern = /(\d{4}-\d{2}-\d{2})( - )(INV\S+)( - )(\S+\s\S+)( - )(\$.*)/
-    # pattern =
-    match = invoices.match(pattern)
-    if match
-        match.tap do #| line |
-            # print match
-            p match.inspect
+
+    pattern = /(?<Date: >\d{4}-\d{2}-\d{2})( - )(?<Invoice: : >INV\S+)( - )(?<Client: >\S+\s\S+)( - )(?<Amount: >\$.*)/
+
+    match = invoice_data.scan(pattern)
+    match.each do | line |
+        line.each do 
+
+            $date = line[0]
+            $invoice = line[1]
+            $client = line[2]
+            $amount = line[3]
+
         end
+        puts "Date: %s Invoice: %s Client: %s Amount: %s" % [$date, $invoice, $client, $amount] #% [invoice] % [client] % [amount]
+
     end
+
 end
 
 
