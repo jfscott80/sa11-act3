@@ -1,6 +1,7 @@
 def extract_urls(text)
-    pattern = //
-    text.scan(pattern)
+    pattern = /(\w+:\/\/\w+.\w+.(?!=\b)\w+\??\=?[^\.][^"]\b)/
+    url = text.scan(pattern)
+    p url
 end
 
 sample_text = "Visit our site at http://www.example.org for more
